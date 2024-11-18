@@ -1,100 +1,179 @@
-import Image from "next/image";
+"use client";
+import { useRouter } from "next/navigation";
+import { useAuth } from "./context/AuthContext";
+import { CalendarDays, Users, MapPin, Shield } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
+  const router = useRouter();
+  const { user } = useAuth();
+
+  const features = [
+    {
+      icon: <CalendarDays className="h-6 w-6" />,
+      title: "Event Planning",
+      description:
+        "Create and manage events with our intuitive tools. From small gatherings to large conferences.",
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "Attendee Management",
+      description:
+        "Track RSVPs, send invitations, and manage your guest list effortlessly.",
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Venue Selection",
+      description:
+        "Discover and book perfect venues for your events. Virtual or in-person.",
+    },
+    {
+      icon: <Shield className="h-6 w-6" />,
+      title: "Secure Platform",
+      description:
+        "Your events and data are protected with enterprise-grade security.",
+    },
+  ];
+
+  const stats = [
+    { label: "Events Created", value: "10K+" },
+    { label: "Active Users", value: "50K+" },
+    { label: "Countries", value: "30+" },
+    { label: "Success Rate", value: "99%" },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-[#f02e65] to-[#ab073d] text-white">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative container mx-auto px-4 py-24">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Create Unforgettable Events
+            </h1>
+            <p className="text-xl md:text-2xl mb-8">
+              Epta events helps you plan, organize, and execute extraordinary
+              events with ease. From concept to celebration, we've got you
+              covered.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => router.push(user ? "/create" : "/register")}
+                className="px-8 py-4 bg-white text-[#f02e65] rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                {user ? "Create Event" : "Get Started Free"}
+              </button>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="px-8 py-4 border-2 border-white rounded-full text-lg font-semibold hover:bg-white hover:text-[#f02e65] transition-colors"
+              >
+                Explore Events
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </div>
+
+      {/* Features Section */}
+      <div className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            Everything You Need for Successful Events
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="text-[#f02e65] mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl font-bold text-[#f02e65] mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-gray-900 text-white py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Create Your Next Event?
+          </h2>
+          <p className="text-xl mb-8 text-gray-300">
+            Join thousands of event organizers who trust Epta events
+          </p>
+          <button
+            onClick={() => router.push(user ? "/create" : "/register")}
+            className="px-8 py-4 bg-[#f02e65] rounded-full text-lg font-semibold hover:bg-[#ab073d] transition-colors"
+          >
+            {user ? "Create Your Event" : "Sign Up Now"}
+          </button>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-100 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-semibold mb-4">Product</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Templates</li>
+                <li>Integration</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Company</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>About Us</li>
+                <li>Careers</li>
+                <li>Blog</li>
+                <li>Press</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>Documentation</li>
+                <li>Help Center</li>
+                <li>Community</li>
+                <li>Partners</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>Privacy</li>
+                <li>Terms</li>
+                <li>Security</li>
+                <li>Cookies</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+            <p>© 2024 Epta events. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );

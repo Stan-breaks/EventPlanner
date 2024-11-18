@@ -56,8 +56,8 @@ export default function Register() {
         throw new Error("Registration failed");
       }
       router.push("/"); // Redirect to home page after successful registration
-    } catch (error: any) {
-      setError("Failed to create an account. " + error.message);
+    } catch (error: unknown) {
+      setError("Failed to create an account. ");
       console.error(error);
     } finally {
       setLoading(false);

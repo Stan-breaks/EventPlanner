@@ -16,7 +16,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "@/app/lib/firebase";
+import { auth } from "@/lib/firebase";
 
 // Define types for user data
 interface UserData {

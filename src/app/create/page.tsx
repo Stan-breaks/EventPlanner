@@ -2,8 +2,8 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/context/AuthContext";
-import { firestore } from "@/app/lib/firebase";
+import { useAuth } from "@/context/AuthContext";
+import { firestore } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 interface EventForm {

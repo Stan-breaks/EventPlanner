@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { collection, getDocs } from "firebase/firestore";
-import { firestore } from "@/app/lib/firebase"; // Import your configured Firestore
+import { firestore } from "@/lib/firebase"; // Import your configured Firestore
 
 interface Event {
   id: string;

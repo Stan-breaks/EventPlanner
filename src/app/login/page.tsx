@@ -1,6 +1,6 @@
 // src/components/auth/Login.js
 "use client";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default function Login() {
   const { login } = useAuth();
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setLoading(true);

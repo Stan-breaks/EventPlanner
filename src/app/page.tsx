@@ -53,7 +53,7 @@ export default function LandingPage() {
             </h1>
             <p className="text-xl md:text-2xl mb-8">
               Epta events helps you plan, organize, and execute extraordinary
-              events with ease. From concept to celebration, we've got you
+              events with ease. From concept to celebration, we&apos;ve got you
               covered.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
